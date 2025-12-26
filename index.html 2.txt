@@ -1,0 +1,80 @@
+<!-- Add after the first quiz div -->
+
+<!-- TAYLOR SWIFT QUIZ -->
+<div id="taylorQuiz" class="quiz-container hidden">
+  <h2>🎤 Taylor Swift Quiz 🎤</h2>
+  <p>Answer all correctly to unlock your birthday message!</p>
+  <form id="taylorQuizForm">
+    <div class="quiz-question">
+      <strong>1. Which album has the song "Love Story"?</strong><br>
+      <label><input type="radio" name="tq1" value="Fearless">Fearless</label>
+      <label><input type="radio" name="tq1" value="1989">1989</label>
+      <label><input type="radio" name="tq1" value="Red">Red</label>
+    </div>
+
+    <div class="quiz-question">
+      <strong>2. What is Taylor Swift’s middle name?</strong><br>
+      <label><input type="radio" name="tq2" value="Alison">Alison</label>
+      <label><input type="radio" name="tq2" value="Marie">Marie</label>
+      <label><input type="radio" name="tq2" value="Elizabeth">Elizabeth</label>
+    </div>
+
+    <div class="quiz-question">
+      <strong>3. Which tour was called “The Eras Tour”?</strong><br>
+      <label><input type="radio" name="tq3" value="Reputation Stadium Tour">Reputation Stadium Tour</label>
+      <label><input type="radio" name="tq3" value="Eras Tour">Eras Tour</label>
+      <label><input type="radio" name="tq3" value="Red Tour">Red Tour</label>
+    </div>
+
+    <button type="submit">Submit Answers</button>
+  </form>
+  <p id="taylorQuizResult" style="color:#ffcccb; margin-top:10px;"></p>
+</div>
+
+<script>
+// AFTER first quiz is passed, show Taylor quiz
+const taylorQuiz = document.getElementById('taylorQuiz');
+const taylorQuizForm = document.getElementById('taylorQuizForm');
+const taylorQuizResult = document.getElementById('taylorQuizResult');
+
+quizForm.addEventListener("submit", function(e) {
+  e.preventDefault();
+  const q1 = quizForm.q1.value;
+  const q2 = quizForm.q2.value;
+  const q3 = quizForm.q3.value;
+
+  if (q1 === "28" && q2 === "Blue" && q3 === "Vrushali") {
+    quizResult.style.color = "lightgreen";
+    quizResult.textContent = "Correct! Now try this Taylor Swift quiz!";
+    setTimeout(() => {
+      document.getElementById("quiz").classList.add("hidden");
+      taylorQuiz.classList.remove("hidden");
+    }, 1500);
+  } else {
+    quizResult.style.color = "#ffcccb";
+    quizResult.textContent = "Oops! One or more answers are wrong. Try again.";
+  }
+});
+
+taylorQuizForm.addEventListener("submit", function(e) {
+  e.preventDefault();
+  const tq1 = taylorQuizForm.tq1.value;
+  const tq2 = taylorQuizForm.tq2.value;
+  const tq3 = taylorQuizForm.tq3.value;
+
+  if (tq1 === "Fearless" && tq2 === "Alison" && tq3 === "Eras Tour") {
+    taylorQuizResult.style.color = "lightgreen";
+    taylorQuizResult.textContent = "Yay! You unlocked the birthday message!";
+    setTimeout(() => {
+      taylorQuiz.classList.add("hidden");
+      document.getElementById("finalMessage").classList.remove("hidden");
+      document.querySelector("h1").classList.add("hidden");
+      document.querySelector("p").classList.add("hidden");
+      startConfetti();
+    }, 1500);
+  } else {
+    taylorQuizResult.style.color = "#ffcccb";
+    taylorQuizResult.textContent = "Not quite, try again!";
+  }
+});
+</script>
